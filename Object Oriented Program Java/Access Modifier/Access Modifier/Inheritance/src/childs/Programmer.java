@@ -3,7 +3,7 @@ package childs;
 import parents.Person;
 
 public class Programmer extends Person {
-    String technology;
+    public String technology;
 
     public Programmer() {
         super();
