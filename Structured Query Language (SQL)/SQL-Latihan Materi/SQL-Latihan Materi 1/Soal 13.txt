@@ -1,0 +1,5 @@
+SELECT O.OrderID, O.CustomerID, O.EmployeeID, O.OrderDate, S.ShipperName 
+FROM Orders AS O
+LEFT JOIN Shippers AS S
+ON O.ShipperID = S.ShipperID
+WHERE S.ShipperName = 'Speedy Express'

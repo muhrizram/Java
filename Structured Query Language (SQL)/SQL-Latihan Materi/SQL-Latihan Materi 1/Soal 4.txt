@@ -1,0 +1,5 @@
+SELECT COUNT(O.ProductID) 
+FROM Products AS P
+RIGHT JOIN OrderDetails AS O
+ON P.ProductID = O.ProductID
+WHERE P.ProductName = 'Konbu'

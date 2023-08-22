@@ -1,0 +1,6 @@
+SELECT P.*, C.CategoryName 
+FROM Products AS P
+LEFT JOIN Categories AS C
+ON P.CategoryID = C.CategoryID
+WHERE P.Price > (SELECT AVG(Price) FROM Products) 
+AND C.CategoryName = 'Beverages'

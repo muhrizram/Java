@@ -1,0 +1,4 @@
+SELECT * 
+FROM Customers 
+WHERE NOT Country 
+IN ('Brazil','Mexico', 'Argentina','Venezuela')
