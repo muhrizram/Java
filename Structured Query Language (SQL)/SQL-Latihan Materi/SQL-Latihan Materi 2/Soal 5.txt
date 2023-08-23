@@ -1,0 +1,10 @@
+SELECT O.OrderID, C.CustomerName, SUM(OD.Quantity*P.Price) AS TotalPrice, 
+CASE 
+	WHEN SUM(OD.Quantity*P.Price) BETWEEN 1 AND 500 THEN 'Hat'
+    WHEN SUM(OD.Quantity*P.Price) BETWEEN 500 AND 1000 THEN 'T-Shirt'
+    WHEN SUM(OD.Quantity*P.Price) > 1000 THEN 'TV'
+END AS Bonus FROM Orders AS O 
+INNER JOIN Customers AS C ON C.CustomerID = O.CustomerID
+INNER JOIN OrderDetails AS OD ON OD.OrderID = O.OrderID
+INNER JOIN Products AS P ON P.ProductID = OD.ProductID
+GROUP BY O.OrderID

@@ -1,0 +1,5 @@
+SELECT C.CustomerName, COUNT(OD.ProductID) AS TotalProduct 
+FROM Orders AS O
+RIGHT JOIN Customers AS C ON O.CustomerID = C.CustomerID
+LEFT JOIN OrderDetails AS OD ON O.OrderID = OD.OrderID
+GROUP BY C.CustomerName

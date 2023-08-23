@@ -1,0 +1,5 @@
+SELECT C.Country, P.ProductName, SUM(OD.Quantity) AS TotalQuantityPerProduct FROM Customers AS C
+INNER JOIN Orders AS O ON O.CustomerID = C.CustomerID
+INNER JOIN OrderDetails AS OD ON OD.OrderID = O.OrderID
+INNER JOIN Products AS P ON P.ProductID = OD.ProductID
+GROUP BY C.Country, P.ProductName

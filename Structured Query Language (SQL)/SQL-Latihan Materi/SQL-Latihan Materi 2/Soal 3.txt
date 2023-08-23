@@ -1,0 +1,6 @@
+SELECT C.CustomerName, P.ProductName, SUM(OD.Quantity) AS TotalQuantityOrder FROM OrderDetails AS OD
+RIGHT JOIN Orders AS O ON O.OrderID = OD.OrderID
+RIGHT JOIN Customers AS C ON C.CustomerID = O.CustomerID
+LEFT JOIN Products AS P ON P.ProductID = OD.ProductID
+GROUP BY C.CustomerName, P.ProductName  
+ORDER BY C.CustomerName, P.ProductName  

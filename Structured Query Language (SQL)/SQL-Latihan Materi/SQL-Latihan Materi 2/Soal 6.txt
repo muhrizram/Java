@@ -1,0 +1,9 @@
+SELECT P.ProductName, SUM(OD.Quantity) AS TotalQuantityProduct,
+CASE
+	WHEN SUM(OD.Quantity) < 30 THEN 'Not Recommended Product'
+    WHEN SUM(OD.Quantity) < (SELECT AVG(Total) FROM (SELECT SUM(Quantity) AS Total FROM OrderDetails GROUP BY ProductID )) THEN 'Recommended Product'
+    ELSE 'Best Seller Product'
+    END AS Details
+FROM OrderDetails AS OD
+INNER JOIN Products AS P ON P.ProductID = OD.ProductID
+GROUP BY P.ProductID
