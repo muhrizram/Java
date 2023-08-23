@@ -1,0 +1,5 @@
+SELECT m.mov_title
+FROM movie AS m
+INNER JOIN rating AS rat
+ON rat.mov_id = m.mov_id
+WHERE rat.rev_stars IS NULL

@@ -1,0 +1,5 @@
+SELECT rev_name
+FROM reviewer
+UNION ALL
+SELECT mov_title
+FROM movie

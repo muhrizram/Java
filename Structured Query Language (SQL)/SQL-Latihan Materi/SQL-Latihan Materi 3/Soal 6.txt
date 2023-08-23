@@ -1,0 +1,5 @@
+SELECT r.rev_name, rat.rev_stars
+FROM reviewer AS r
+INNER JOIN rating AS rat
+ON rat.rev_id = r.rev_id
+WHERE rat.rev_stars >= 7 AND r.rev_name IS NOT NULL
