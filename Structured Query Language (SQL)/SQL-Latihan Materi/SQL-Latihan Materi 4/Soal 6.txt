@@ -1,0 +1,6 @@
+SELECT DISTINCT M.mov_year, R.rev_stars
+FROM movie AS M
+INNER JOIN rating AS R
+ON R.mov_id = M.mov_id
+WHERE (SELECT COUNT(movie.mov_year) FROM movie) >= 1
+AND R.rev_stars > 3 ORDER BY M.mov_year 

@@ -1,0 +1,4 @@
+SELECT M.mov_title
+FROM movie AS M
+WHERE mov_id in
+(SELECT mov_id from rating WHERE rev_stars IS NULL)

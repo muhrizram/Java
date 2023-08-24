@@ -1,0 +1,7 @@
+SELECT M.mov_title
+FROM movie AS M
+INNER JOIN movie_direction AS MD
+ON MD.mov_id = M.mov_id
+INNER JOIN director AS D
+ON D.dir_id = MD.dir_id
+WHERE D.dir_fname = 'James' AND D.dir_lname = 'Cameron'

@@ -1,0 +1,8 @@
+SELECT R.rev_name, M.mov_title, RAT.rev_stars
+FROM reviewer AS R
+INNER JOIN rating AS RAT
+ON RAT.rev_id = R.rev_id
+INNER JOIN movie AS M
+ON M.mov_id = RAT.mov_id
+WHERE RAT.rev_stars = 
+	(SELECT MIN(rev_stars) FROM rating)

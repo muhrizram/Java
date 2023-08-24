@@ -1,0 +1,8 @@
+SELECT M.mov_title, A.act_fname
+FROM movie AS M
+INNER JOIN movie_cast AS MC
+ON MC.mov_id = M.mov_id
+INNER JOIN actor AS A
+ON A.act_id = MC.act_id
+WHERE (SELECT COUNT(act_id) FROM movie_cast WHERE movie_cast.act_id = A.act_id) >= 2
+ORDER BY act_fname

@@ -1,0 +1,7 @@
+SELECT R.rev_name
+FROM reviewer AS R
+INNER JOIN rating AS RAT
+ON RAT.rev_id = R.rev_id
+INNER JOIN movie AS M
+ON M.mov_id = RAT.mov_id
+WHERE M.mov_title = 'American Beauty'

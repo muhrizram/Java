@@ -1,0 +1,5 @@
+SELECT (dir_fname||' '||dir_lname) AS DirectorFullname
+FROM director
+WHERE dir_id = 
+(SELECT dir_id FROM movie_direction WHERE mov_id = 
+(SELECT mov_id FROM movie WHERE mov_title = 'Eyes Wide Shut'))

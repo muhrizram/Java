@@ -1,0 +1,7 @@
+SELECT M.mov_title
+FROM movie AS M
+INNER JOIN rating AS RAT
+ON RAT.mov_id = M.mov_id
+INNER JOIN reviewer AS R
+ON R.rev_id = RAT.rev_id
+WHERE R.rev_name <> 'Paul Monks'

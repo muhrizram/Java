@@ -1,0 +1,7 @@
+SELECT A.act_fname, A.act_lname, M.mov_title
+FROM actor AS A
+INNER JOIN movie_cast AS MC
+ON MC.act_id = A.act_id
+INNER JOIN movie AS M
+ON M.mov_id = MC.mov_id
+WHERE M.mov_title = 'Annie Hall'

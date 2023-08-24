@@ -1,0 +1,15 @@
+SELECT RE.rev_name, M.mov_title, M.mov_year, M.mov_dt_rel, D.dir_fname, A.act_fname
+FROM movie AS M
+INNER JOIN movie_direction AS MD
+ON MD.mov_id = M.mov_id
+LEFT JOIN director AS D
+ON D.dir_id = MD.dir_id
+INNER JOIN movie_cast AS MC
+ON MC.mov_id = M.mov_id
+LEFT JOIN actor AS A
+ON A.act_id = MC.act_id
+INNER JOIN rating AS R
+ON R.mov_id = M.mov_id
+LEFT JOIN reviewer AS RE
+ON RE.rev_id = R.rev_id
+WHERE RE.rev_name IS NULL

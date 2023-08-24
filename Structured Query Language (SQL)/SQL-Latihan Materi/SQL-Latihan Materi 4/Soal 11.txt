@@ -1,0 +1,7 @@
+SELECT UPPER(M.mov_title), RAT.rev_stars
+FROM movie AS M
+INNER JOIN rating AS RAT
+ON RAT.mov_id = M.mov_id
+WHERE RAT.rev_stars =
+	(SELECT MAX(rev_stars) FROM rating)
+ORDER BY M.mov_title
