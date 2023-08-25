@@ -1,0 +1,10 @@
+SELECT country, last_name, first_name, shipped_date, O.order_id, 
+CAST(SUM((quantity * unit_price) - (quantity * unit_price * discount)) AS integer) AS SaleAmount
+FROM employees AS E
+INNER JOIN orders AS O
+ON O.employee_id = E.employee_id
+INNER JOIN order_details AS OD
+ON OD.order_id = O.order_id
+WHERE EXTRACT(YEAR FROM shipped_date) = '1997'
+GROUP BY country, last_name, first_name, shipped_date, O.order_id
+ORDER BY country

@@ -1,0 +1,12 @@
+SELECT C.category_id, C.category_name, product_name, 
+CAST(SUM((quantity * OD.unit_price) - (quantity * OD.unit_price * discount)) AS integer) AS productsales,
+EXTRACT(QUARTER FROM O.shipped_date) AS shippedquarter
+FROM categories AS C
+INNER JOIN products AS P
+ON P.category_id = C.category_id
+INNER JOIN order_details AS OD
+ON OD.product_id = P.product_id
+INNER JOIN orders AS O
+ON O.order_id = OD.order_id
+GROUP BY C.category_id, product_name, shippedquarter
+ORDER BY category_id

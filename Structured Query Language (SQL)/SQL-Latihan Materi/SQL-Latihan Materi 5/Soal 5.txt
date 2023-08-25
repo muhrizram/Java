@@ -1,0 +1,4 @@
+SELECT order_id, products.product_id, products.product_name, order_details.unit_price, quantity, discount, 
+CAST((order_details.unit_price * quantity - discount) AS integer) AS extendedPrice 
+FROM order_details, products
+WHERE products.product_id = order_details.product_id

@@ -1,0 +1,11 @@
+SELECT category_name, 
+CAST(SUM((quantity * OD.unit_price) - (quantity * OD.unit_price * discount)) AS integer) AS CategorySales
+FROM categories AS C
+INNER JOIN products P
+ON P.category_id = C.category_id
+INNER JOIN order_details AS OD
+ON OD.product_id = P.product_id
+INNER JOIN orders AS O
+ON O.order_id = OD.order_id
+WHERE EXTRACT(YEAR FROM O.order_date) = '1997'
+GROUP BY category_name

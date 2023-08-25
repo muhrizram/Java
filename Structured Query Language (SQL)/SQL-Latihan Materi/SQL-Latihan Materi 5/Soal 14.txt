@@ -1,0 +1,30 @@
+SELECT product_name, company_name, EXTRACT(YEAR FROM order_date) AS OrderYear, 
+CASE 
+	WHEN EXTRACT(QUARTER FROM order_date) = 1 THEN 
+	CAST(SUM((quantity * OD.unit_price) - (quantity * OD.unit_price * discount)) AS integer)
+	ELSE 0
+END AS qtr1,
+CASE 
+	WHEN EXTRACT(QUARTER FROM order_date) = 2 THEN 
+	CAST(SUM((quantity * OD.unit_price) - (quantity * OD.unit_price * discount)) AS integer)
+	ELSE 0
+END AS qtr2,
+CASE 
+	WHEN EXTRACT(QUARTER FROM order_date) = 3 THEN 
+	CAST(SUM((quantity * OD.unit_price) - (quantity * OD.unit_price * discount)) AS integer)
+	ELSE 0
+END AS qtr3,
+CASE 
+	WHEN EXTRACT(QUARTER FROM order_date) = 4 THEN 
+	CAST(SUM((quantity * OD.unit_price) - (quantity * OD.unit_price * discount)) AS integer)
+	ELSE 0
+END AS qtr4
+FROM products AS P
+INNER JOIN order_details AS OD
+ON OD.product_id = P.product_id
+INNER JOIN orders AS O
+ON O.order_id = OD.order_id
+INNER JOIN customers C
+ON C.customer_id = O.customer_id
+WHERE EXTRACT(YEAR FROM order_date) = '1997'
+GROUP BY product_name, company_name, order_date

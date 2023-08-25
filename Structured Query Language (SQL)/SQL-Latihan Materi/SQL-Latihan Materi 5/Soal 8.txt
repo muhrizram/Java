@@ -1,0 +1,7 @@
+SELECT C.category_name, P.product_name, P.quantity_per_unit, P.units_in_stock, P.discontinued, 
+CASE 
+	WHEN discontinued = 1 THEN 'Yes'
+	ELSE 'No'
+END AS discontinued
+FROM categories AS C, products AS P
+WHERE C.category_id = P.category_id

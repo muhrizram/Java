@@ -1,0 +1,14 @@
+SELECT category_name AS "Product Category", 
+CASE 
+	WHEN country IN ('Japan', 'Australia', 'Singapore') THEN 'Asia-Pasific'
+	WHEN country IN ('USA', 'Brazil', 'Canada') THEN 'America'
+	ELSE 'Europe'
+END AS SupplierContingen,
+SUM(units_in_stock) AS "Unit In Stock"
+FROM categories AS C
+INNER JOIN products AS P
+ON P.category_id = C.category_id
+INNER JOIN suppliers AS S
+ON S.supplier_id = P.supplier_id
+GROUP BY category_name, SupplierContingen
+ORDER BY category_name, SupplierContingen
